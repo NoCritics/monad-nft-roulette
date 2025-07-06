@@ -1,0 +1,224 @@
+.roulette-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.roulette-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  margin: 2rem 0;
+}
+
+.roulette-pointer {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: var(--monad-red);
+  z-index: 10;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-5px); }
+}
+
+.roulette-wheel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--monad-dark);
+  border: 4px solid var(--monad-purple);
+  box-shadow: 0 0 50px rgba(139, 92, 246, 0.5);
+  transition: transform 5s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+  overflow: hidden;
+}
+
+.roulette-wheel.spinning {
+  animation: glow 0.5s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 50px rgba(139, 92, 246, 0.5); }
+  50% { box-shadow: 0 0 100px rgba(139, 92, 246, 0.8); }
+}
+
+.wheel-segment {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  transform-origin: 100% 100%;
+  top: 50%;
+  left: 50%;
+  margin-top: -50%;
+  margin-left: -50%;
+  opacity: 0.9;
+}
+
+.segment-label {
+  position: absolute;
+  top: 20%;
+  left: 60%;
+  transform: rotate(45deg);
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.wheel-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  height: 30%;
+  background: var(--monad-darker);
+  border-radius: 50%;
+  border: 3px solid var(--monad-accent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.ticket-count {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--monad-accent);
+}
+
+.ticket-label {
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+.winner-announcement {
+  text-align: center;
+  margin-top: 2rem;
+  position: relative;
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.winner-text {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--monad-green), var(--monad-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.winner-address {
+  font-size: 1.5rem;
+  font-family: monospace;
+  color: var(--monad-accent);
+  padding: 0.5rem 1rem;
+  background: rgba(139, 92, 246, 0.1);
+  border-radius: 8px;
+  border: 2px solid var(--monad-green);
+  display: inline-block;
+}
+
+.confetti {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--monad-accent);
+  animation: confetti-fall 3s ease-out infinite;
+}
+
+.confetti-piece:nth-child(odd) {
+  background: var(--monad-purple);
+  width: 8px;
+  height: 8px;
+}
+
+.confetti-piece:nth-child(3n) {
+  background: var(--monad-green);
+  animation-delay: 0.5s;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.pre-game {
+  padding: 2rem;
+  background: rgba(139, 92, 246, 0.05);
+  border-radius: 16px;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.pot-preview h3 {
+  color: var(--monad-accent);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.pot-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pot-player {
+  position: relative;
+  background: rgba(139, 92, 246, 0.05);
+  padding: 0.75rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.player-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  opacity: 0.2;
+  transition: width 0.3s ease;
+}
+
+.player-label {
+  position: relative;
+  z-index: 1;
+  font-size: 0.9rem;
+  font-weight: 500;
+}

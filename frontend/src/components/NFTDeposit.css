@@ -1,0 +1,51 @@
+.nft-deposit {
+  background: var(--monad-dark);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.nft-deposit h3 {
+  margin-bottom: 1.5rem;
+  color: var(--monad-accent);
+}
+
+.deposit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input {
+  background: rgba(139, 92, 246, 0.05);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 8px;
+  padding: 0.75rem;
+  color: var(--monad-text);
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--monad-accent);
+  background: rgba(139, 92, 246, 0.1);
+}
+
+.button-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.approve-btn {
+  background: var(--monad-accent);
+}
+
+.deposit-btn {
+  background: var(--monad-green);
+}
+
+.deposit-btn:hover {
+  background: #0ea572;
+}
