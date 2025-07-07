@@ -100,10 +100,10 @@ contract NFTRoulette is Ownable, ReentrancyGuard, IEntropyConsumer {
         if (players[msg.sender].deposits.length == 0) {
             playerAddresses.push(msg.sender);
             playerCount++;
+            players[msg.sender].ticketStart = totalTickets;
         }
         
         players[msg.sender].deposits.push(NFTDeposit(collection, tokenId));
-        players[msg.sender].ticketStart = totalTickets;
         totalTickets += tickets;
         players[msg.sender].ticketEnd = totalTickets;
         
