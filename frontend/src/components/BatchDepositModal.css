@@ -1,0 +1,674 @@
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Batch Deposit Modal */
+.batch-deposit-modal {
+  background: linear-gradient(135deg, rgba(30, 0, 50, 0.95), rgba(50, 0, 80, 0.95));
+  border: 1px solid rgba(138, 43, 226, 0.5);
+  border-radius: 24px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: 
+    0 20px 60px rgba(138, 43, 226, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Modal Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  text-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 28px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-button:hover {
+  color: #fff;
+}
+
+/* Progress Indicator */
+.progress-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(138, 43, 226, 0.2);
+  border: 2px solid rgba(138, 43, 226, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.progress-step.active .step-number {
+  background: #8A2BE2;
+  border-color: #8A2BE2;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+}
+
+.progress-step.complete .step-number {
+  background: #DAA520;
+  border-color: #DAA520;
+  color: #1a0033;
+}
+
+.progress-step span {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.progress-step.active span,
+.progress-step.complete span {
+  color: #fff;
+}
+
+.progress-line {
+  width: 80px;
+  height: 2px;
+  background: rgba(138, 43, 226, 0.2);
+  margin: 0 10px;
+  transition: background 0.3s ease;
+}
+
+.progress-line.complete {
+  background: #DAA520;
+}
+
+/* Modal Body */
+.modal-body {
+  padding: 24px;
+  max-height: calc(90vh - 200px);
+  overflow-y: auto;
+}
+
+/* Review Step */
+.review-step {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.review-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.summary-stat {
+  background: rgba(138, 43, 226, 0.1);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+
+.summary-stat.highlight {
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(218, 165, 32, 0.1));
+  border-color: rgba(218, 165, 32, 0.3);
+}
+
+.stat-label {
+  display: block;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  display: block;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.stat-value.gold {
+  color: #DAA520;
+  text-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
+}
+
+/* NFT List */
+.nft-list h3 {
+  color: #fff;
+  font-size: 16px;
+  margin: 0 0 12px 0;
+}
+
+.nft-scroll-list {
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.nft-list-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(138, 43, 226, 0.1);
+  border: 1px solid rgba(138, 43, 226, 0.2);
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.nft-thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.nft-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nft-name {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.nft-collection {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+}
+
+.nft-tickets {
+  color: #DAA520;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Modal Actions */
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.cancel-button,
+.primary-button {
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.cancel-button {
+  background: rgba(138, 43, 226, 0.2);
+  border: 1px solid rgba(138, 43, 226, 0.5);
+  color: #fff;
+}
+
+.cancel-button:hover {
+  background: rgba(138, 43, 226, 0.3);
+  transform: translateY(-1px);
+}
+
+.primary-button {
+  background: linear-gradient(135deg, #8A2BE2, #DAA520);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.primary-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(138, 43, 226, 0.4);
+}
+
+/* Approvals Step */
+.approvals-step {
+  text-align: center;
+}
+
+.step-description {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 24px;
+}
+
+.approval-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.approval-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(138, 43, 226, 0.1);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.approval-item.pending {
+  border-color: rgba(138, 43, 226, 0.6);
+  background: rgba(138, 43, 226, 0.2);
+}
+
+.approval-item.approved {
+  border-color: rgba(218, 165, 32, 0.5);
+  background: rgba(218, 165, 32, 0.1);
+}
+
+.approval-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.collection-name {
+  flex: 1;
+  text-align: left;
+  color: #fff;
+}
+
+.error-text {
+  color: #ff6b6b;
+  font-size: 12px;
+}
+
+/* Waiting Message */
+.waiting-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(138, 43, 226, 0.2);
+  border-top-color: #8A2BE2;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.spinner.large {
+  width: 60px;
+  height: 60px;
+  border-width: 4px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Deposit Step */
+.deposit-step {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.deposit-mascot {
+  width: 120px;
+  height: 120px;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.deposit-step h3 {
+  color: #fff;
+  font-size: 24px;
+  margin: 0;
+}
+
+.deposit-step p {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.tx-info {
+  background: rgba(138, 43, 226, 0.1);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 12px;
+}
+
+.tx-info p {
+  font-family: monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Complete Step */
+.complete-step {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+}
+
+.success-animation {
+  margin-bottom: 16px;
+}
+
+.success-icon {
+  font-size: 80px;
+  animation: successPop 0.5s ease;
+}
+
+@keyframes successPop {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.complete-step h3 {
+  color: #fff;
+  font-size: 28px;
+  margin: 0;
+}
+
+.complete-step p {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.ticket-success {
+  color: #DAA520 !important;
+  font-size: 20px !important;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
+}
+
+/* Confetti */
+.confetti-wrapper {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #DAA520;
+  animation: confettiFall 3s ease-in-out infinite;
+}
+
+.confetti:nth-child(2) {
+  left: 30%;
+  background: #8A2BE2;
+  animation-delay: 0.5s;
+}
+
+.confetti:nth-child(3) {
+  left: 70%;
+  background: #ff6b6b;
+  animation-delay: 1s;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(300px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Scrollbar Styling */
+.nft-scroll-list::-webkit-scrollbar,
+.modal-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.nft-scroll-list::-webkit-scrollbar-track,
+.modal-body::-webkit-scrollbar-track {
+  background: rgba(138, 43, 226, 0.1);
+  border-radius: 4px;
+}
+
+.nft-scroll-list::-webkit-scrollbar-thumb,
+.modal-body::-webkit-scrollbar-thumb {
+  background: rgba(138, 43, 226, 0.5);
+  border-radius: 4px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .batch-deposit-modal {
+    width: 95%;
+    max-height: 95vh;
+  }
+  
+  .review-summary {
+    grid-template-columns: 1fr;
+  }
+  
+  .progress-line {
+    width: 40px;
+  }
+  
+  .modal-actions {
+    flex-direction: column;
+  }
+  
+  .cancel-button,
+  .primary-button {
+    width: 100%;
+  }
+}
+
+
+/* Manual Approval Styles */
+.approval-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.collection-address {
+  font-size: 12px;
+  color: #999;
+  font-family: monospace;
+}
+
+.approve-button {
+  padding: 8px 20px;
+  background: linear-gradient(135deg, #8a2be2, #5f1fa2);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.approve-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #9a3cf2, #6f2fb2);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(138, 43, 226, 0.3);
+}
+
+.approve-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pending-text {
+  color: #ffd700;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.approved-text {
+  color: #4caf50;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.error-message {
+  background: rgba(244, 67, 54, 0.1);
+  border: 1px solid rgba(244, 67, 54, 0.3);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 16px;
+}
+
+.error-message p {
+  color: #f44336;
+  margin: 0;
+  font-size: 14px;
+}
+
+.deposit-summary {
+  background: rgba(138, 43, 226, 0.1);
+  border: 1px solid rgba(138, 43, 226, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.summary-item:last-child {
+  margin-bottom: 0;
+}
+
+.summary-item span {
+  color: #ccc;
+  font-size: 14px;
+}
+
+.summary-item strong {
+  color: #fff;
+  font-size: 18px;
+}
+
+.summary-item .gold {
+  color: #ffd700;
+}
+
+.primary-button.large {
+  padding: 16px 32px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.tx-hash {
+  font-size: 12px;
+  color: #999;
+  font-family: monospace;
+  margin-top: 8px;
+}
+
+.tx-info {
+  font-size: 12px;
+  color: #999;
+  font-family: monospace;
+  margin-top: 16px;
+  text-align: center;
+}

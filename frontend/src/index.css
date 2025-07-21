@@ -1,3 +1,6 @@
+/* Import Google Fonts for a prestigious feel */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,46 +8,383 @@
 }
 
 :root {
+  /* Monad-inspired luxury color palette */
   --monad-purple: #8B5CF6;
+  --monad-purple-dark: #6D28D9;
+  --monad-purple-light: #A78BFA;
+  --monad-purple-glow: #8B5CF6;
+  
+  /* Casino luxury colors */
+  --casino-gold: #FFD700;
+  --casino-gold-light: #FFF59D;
+  --casino-gold-dark: #FFC107;
+  --casino-black: #0A0A0A;
+  --casino-velvet: #2D1B69;
+  
+  /* Background gradients */
   --monad-dark: #1A1A2E;
   --monad-darker: #0F0F1E;
+  --monad-darkest: #050510;
+  
+  /* UI Colors */
   --monad-accent: #A78BFA;
-  --monad-text: #E0E0E0;
+  --monad-text: #F5F5F5;
+  --monad-text-secondary: #B8BCC8;
   --monad-green: #10B981;
   --monad-red: #EF4444;
+  
+  /* Glass effect colors */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: rgba(139, 92, 246, 0.3);
+  
+  /* Typography */
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-accent: 'Bebas Neue', cursive;
 }
 
+/* Animated gradient background */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-  background: var(--monad-darker);
+  font-family: var(--font-body);
+  background: var(--monad-darkest);
   color: var(--monad-text);
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
 }
 
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(167, 139, 250, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+    linear-gradient(135deg, var(--monad-darkest) 0%, var(--casino-velvet) 50%, var(--monad-darker) 100%);
+  z-index: -2;
+}
+
+/* Animated stars background */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255, 215, 0, 0.2), transparent),
+    radial-gradient(1px 1px at 50px 160px, rgba(255, 255, 255, 0.2), transparent),
+    radial-gradient(1px 1px at 130px 40px, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(2px 2px at 80px 10px, rgba(255, 215, 0, 0.2), transparent);
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  animation: sparkle 120s linear infinite;
+  z-index: -1;
+}
+
+@keyframes sparkle {
+  from { transform: translateY(0); }
+  to { transform: translateY(-300px); }
+}
+
+/* Global styles */
 #root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
+/* Headings with luxury feel */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: linear-gradient(135deg, var(--monad-text) 0%, var(--casino-gold-light) 50%, var(--monad-text) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 20px rgba(255, 215, 0, 0.3);
+}
+
+/* Premium button styles */
 button {
-  background: var(--monad-purple);
+  background: linear-gradient(135deg, var(--monad-purple) 0%, var(--monad-purple-dark) 100%);
   color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  padding: 14px 28px;
+  border-radius: 12px;
   font-weight: 600;
+  font-family: var(--font-body);
   cursor: pointer;
-  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.9rem;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.4), transparent);
+  transition: left 0.5s;
+}
+
+button:hover::before {
+  left: 100%;
 }
 
 button:hover {
-  background: var(--monad-accent);
   transform: translateY(-2px);
+  box-shadow: 
+    0 10px 30px rgba(139, 92, 246, 0.4),
+    0 0 20px rgba(255, 215, 0, 0.3),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  border-color: var(--casino-gold);
+}
+
+button:active {
+  transform: translateY(0);
 }
 
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
+  background: linear-gradient(135deg, #4a4a4a 0%, #2a2a2a 100%);
+  border-color: transparent;
+}
+
+button:disabled::before {
+  display: none;
+}
+
+/* Glass card effect */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 40px rgba(139, 92, 246, 0.1);
+}
+
+/* Gold accent text */
+.gold-text {
+  background: linear-gradient(135deg, var(--casino-gold) 0%, var(--casino-gold-light) 50%, var(--casino-gold) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Purple glow effect */
+.purple-glow {
+  box-shadow: 
+    0 0 20px rgba(139, 92, 246, 0.5),
+    0 0 40px rgba(139, 92, 246, 0.3),
+    0 0 60px rgba(139, 92, 246, 0.1);
+}
+
+/* Chip effect for values */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  background: linear-gradient(135deg, var(--casino-gold) 0%, var(--casino-gold-dark) 100%);
+  color: var(--casino-black);
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 
+    0 2px 10px rgba(255, 215, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 
+      0 0 20px rgba(139, 92, 246, 0.5),
+      0 0 40px rgba(139, 92, 246, 0.3);
+  }
+  50% { 
+    box-shadow: 
+      0 0 30px rgba(139, 92, 246, 0.7),
+      0 0 60px rgba(139, 92, 246, 0.5);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--monad-darker);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--monad-purple) 0%, var(--monad-purple-dark) 100%);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--monad-purple-light) 0%, var(--monad-purple) 100%);
+}
+
+/* Input styling */
+input, select, textarea {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--monad-text);
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  transition: all 0.3s;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--monad-purple);
+  box-shadow: 
+    0 0 0 3px rgba(139, 92, 246, 0.2),
+    0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+/* Utility classes */
+.text-center { text-align: center; }
+.text-gold { color: var(--casino-gold); }
+.text-purple { color: var(--monad-purple); }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+  
+  button {
+    padding: 12px 20px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Global polish for elegant spacing and typography */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.3;
+  letter-spacing: 0.5px;
+}
+
+p {
+  line-height: 1.6;
+}
+
+/* Ensure all buttons have consistent styling */
+button {
+  font-family: inherit;
+  letter-spacing: 0.3px;
+}
+
+/* Fix any text that's too close together */
+.modal-body > * + * {
+  margin-top: 1rem;
+}
+
+/* Center all loading states elegantly */
+.loading-content,
+.error-content,
+.empty-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 3rem;
+  text-align: center;
+}
+
+/* Ensure cards have proper internal spacing */
+.player-card-luxury > *,
+.nft-card > * {
+  margin: 0;
+}
+
+/* Fix any overlapping z-index issues */
+.modal-overlay {
+  z-index: 1000;
+}
+
+.header {
+  z-index: 100;
+}
+
+.video-backdrop-container {
+  z-index: -1;
+}
+
+/* Smooth all animations */
+* {
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Ensure images never stretch awkwardly */
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Global text shadow for better readability */
+h1, h2, h3 {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Prevent text selection on decorative elements */
+.character-image,
+.video-backdrop-main,
+.mosferatu-backdrop {
+  user-select: none;
+  -webkit-user-select: none;
 }

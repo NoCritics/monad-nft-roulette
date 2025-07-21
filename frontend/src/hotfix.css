@@ -1,0 +1,129 @@
+/* Emergency UI Hotfix - Add to App.css or create as hotfix.css */
+
+/* FIX 1: Make NFT Roulette Table title visible */
+.game-title {
+  /* Force visible golden text with strong shadow */
+  color: #FFD700 !important;
+  text-shadow: 
+    0 0 20px rgba(255, 215, 0, 0.8), 
+    0 0 40px rgba(255, 215, 0, 0.5),
+    0 2px 4px rgba(0, 0, 0, 0.8),
+    2px 2px 0 rgba(0, 0, 0, 0.5) !important;
+  -webkit-text-fill-color: #FFD700 !important;
+  font-weight: 700 !important;
+}
+
+/* Ensure each letter is visible */
+.game-title .letter {
+  color: inherit !important;
+  text-shadow: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+}
+
+/* FIX 2: Crown visibility on top player */
+.player-card-luxury {
+  overflow: visible !important;
+  position: relative !important;
+}
+
+/* Add space for crown on first player */
+.player-card-luxury.top-player {
+  margin-top: 20px !important;
+  overflow: visible !important;
+}
+
+/* Fix crown positioning and ensure visibility */
+.crown-badge {
+  position: absolute !important;
+  top: -15px !important;
+  right: 20px !important;
+  z-index: 100 !important;
+  font-size: 28px !important;
+  filter: 
+    drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5)) 
+    drop-shadow(0 0 12px rgba(255, 215, 0, 1)) !important;
+}
+
+/* Ensure containers don't clip the crown */
+.players-container-elegant {
+  padding-top: 20px !important;
+  overflow-x: visible !important;
+  overflow-y: auto !important;
+}
+
+.vip-content-overlay {
+  overflow: visible !important;
+}
+
+/* FIX 3: SUBTLE Glow Effects */
+/* Remove the old harsh glow */
+.player-glow {
+  display: none !important;
+}
+
+/* Subtle glow on hover - almost inconspicuous */
+.player-card-luxury {
+  /* Very subtle default state */
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  transition: all 0.3s ease !important;
+}
+
+.player-card-luxury:hover {
+  /* Subtle hover glow - barely visible */
+  box-shadow: 
+    0 4px 12px rgba(139, 92, 246, 0.08),
+    0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  transform: translateX(2px) !important;
+}
+
+/* Top player subtle golden accent */
+.player-card-luxury.top-player {
+  /* Very subtle golden glow */
+  box-shadow: 
+    0 2px 12px rgba(255, 215, 0, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 215, 0, 0.05) !important;
+}
+
+.player-card-luxury.top-player:hover {
+  /* Slightly stronger on hover but still subtle */
+  box-shadow: 
+    0 4px 16px rgba(255, 215, 0, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 215, 0, 0.08) !important;
+  transform: translateX(2px) !important;
+}
+
+/* VIP Lounge - very subtle border glow */
+.players-list-luxury {
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.15),
+    0 2px 8px rgba(139, 92, 246, 0.05) !important;
+  border: 1px solid rgba(139, 92, 246, 0.15) !important;
+}
+
+/* VIP title - keep this visible but refined */
+.vip-title {
+  text-shadow: 
+    0 2px 8px rgba(255, 215, 0, 0.4),
+    0 1px 3px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Top player shine - make it very subtle */
+.top-player-shine {
+  opacity: 0.3 !important;
+  animation: subtle-shine 4s ease-in-out infinite !important;
+}
+
+@keyframes subtle-shine {
+  0%, 100% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  50% {
+    opacity: 0.3;
+    transform: translateX(100%);
+  }
+}

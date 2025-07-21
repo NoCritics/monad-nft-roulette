@@ -48,9 +48,9 @@ A decentralized NFT roulette game on Monad Testnet with Magic Eden price integra
 ## Contract Addresses
 
 Deployed on Monad Testnet:
-- PriceOracle: `0x28de644311c63156a79da38cfcaa1870d5c6b1fc`
-- NFTRoulette: `0x659a4a395021f97d60578e435411f49dca1d41dc`
+- PriceOracle: `0x4a18071cd8aa05dece9621a025cd8b0f8e4f5984`
+- NFTRoulette: `0x93b9c1eb1898796c1370589bace1d97d14f5a910`
 
 View on Monad Explorer:
-- [PriceOracle](https://testnet.monadexplorer.com/address/0x28de644311c63156a79da38cfcaa1870d5c6b1fc)
-- [NFTRoulette](https://testnet.monadexplorer.com/address/0x659a4a395021f97d60578e435411f49dca1d41dc)
+- [PriceOracle](https://testnet.monadexplorer.com/address/0x4a18071cd8aa05dece9621a025cd8b0f8e4f5984)
+- [NFTRoulette](https://testnet.monadexplorer.com/address/0x93b9c1eb1898796c1370589bace1d97d14f5a910)

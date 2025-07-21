@@ -5,11 +5,18 @@
   "scripts": {
     "compile": "npx hardhat compile",
     "deploy": "npx hardhat run scripts/deploy.ts --network monadTestnet",
+    "deploy:v2": "npx hardhat run scripts/deployV2.ts --network monadTestnet",
+    "check-migration": "npx hardhat run scripts/checkMigrationReady.ts --network monadTestnet",
     "update-prices": "npx hardhat run scripts/updatePrices.ts --network monadTestnet",
     "update-verification": "npx hardhat run scripts/updateVerification.ts --network monadTestnet",
     "add-manual-nft": "npx hardhat run scripts/addManualNFT.ts --network monadTestnet",
     "read-collections": "npx hardhat run scripts/readCollections.ts --network monadTestnet",
     "auto-vrf": "npx hardhat run scripts/autoVRF.ts --network monadTestnet",
+    "auto-vrf:v2": "npx hardhat run scripts/autoVRFv2.ts --network monadTestnet",
+    "test:v2": "npx hardhat run scripts/testV2.ts --network monadTestnet",
+    "diagnostics": "npx hardhat run scripts/diagnostics.ts --network monadTestnet",
+    "setup-test-nfts": "npx hardhat run scripts/setupTestNFTs.ts --network monadTestnet",
+    "quick-add-collection": "npx hardhat run scripts/quickAddCollection.ts --network monadTestnet",
     "frontend": "cd frontend && npm run dev",
     "frontend:install": "cd frontend && npm install",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -31,6 +38,7 @@
   "dependencies": {
     "@openzeppelin/contracts": "^5.3.0",
     "@pythnetwork/entropy-sdk-solidity": "^2.0.0",
-    "axios": "^1.10.0"
+    "axios": "^1.10.0",
+    "viem": "^2.33.0"
   }
 }

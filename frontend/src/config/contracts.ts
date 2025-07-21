@@ -37,6 +37,7 @@ export const PRICE_ORACLE_ABI = [
   },
 ] as const
 
+// V1 ABI - Keep for GameDisplay compatibility
 export const NFT_ROULETTE_ABI = [
   {
     inputs: [
@@ -47,7 +48,8 @@ export const NFT_ROULETTE_ABI = [
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
-  },  {
+  },
+  {
     inputs: [],
     name: 'gameState',
     outputs: [{ name: '', type: 'uint8' }],
@@ -153,6 +155,75 @@ export const NFT_ROULETTE_ABI = [
   },
 ] as const
 
+// V2 ABI - includes all V1 functions plus new batch functions
+export const NFT_ROULETTE_V2_ABI = [
+  ...NFT_ROULETTE_ABI,
+  {
+    inputs: [
+      { name: 'collections', type: 'address[]' },
+      { name: 'tokenIds', type: 'uint256[]' },
+    ],
+    name: 'depositMultipleNFTs',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      { name: 'user', type: 'address' },
+      { name: 'collections', type: 'address[]' },
+    ],
+    name: 'checkBatchApprovals',
+    outputs: [
+      { name: 'approved', type: 'bool[]' },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'getVerifiedCollections',
+    outputs: [
+      { name: 'collections', type: 'address[]' },
+      { name: 'prices', type: 'uint256[]' },
+      { name: 'names', type: 'string[]' },
+      { name: 'verified', type: 'bool[]' },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      { name: 'collection', type: 'address' },
+      { name: 'tokenId', type: 'uint256' },
+    ],
+    name: 'calculateTickets',
+    outputs: [
+      { name: 'tickets', type: 'uint256' },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'getGameStats',
+    outputs: [
+      { name: 'totalPotValue', type: 'uint256' },
+      { name: 'nftCount', type: 'uint256' },
+      { name: 'timeRemaining', type: 'uint256' },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'getVRFFee',
+    outputs: [{ name: '', type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+] as const
+
 export const ERC721_ABI = [
   {
     inputs: [
@@ -175,6 +246,50 @@ export const ERC721_ABI = [
     stateMutability: 'nonpayable',
     type: 'function',
   },
+  {
+    inputs: [
+      { name: 'owner', type: 'address' },
+      { name: 'operator', type: 'address' },
+    ],
+    name: 'isApprovedForAll',
+    outputs: [{ name: '', type: 'bool' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      { name: 'operator', type: 'address' },
+      { name: 'approved', type: 'bool' },
+    ],
+    name: 'setApprovalForAll',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [{ name: 'owner', type: 'address' }],
+    name: 'balanceOf',
+    outputs: [{ name: '', type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      { name: 'owner', type: 'address' },
+      { name: 'index', type: 'uint256' },
+    ],
+    name: 'tokenOfOwnerByIndex',
+    outputs: [{ name: '', type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ name: 'tokenId', type: 'uint256' }],
+    name: 'tokenURI',
+    outputs: [{ name: '', type: 'string' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
 ] as const
 
 export enum GameState {
@@ -184,3 +299,7 @@ export enum GameState {
   DRAWING = 3,
   COMPLETE = 4,
 }
+
+// Use V2 contract as default
+export const ACTIVE_NFT_ROULETTE_ADDRESS = CONTRACTS.nftRouletteV2
+export const ACTIVE_NFT_ROULETTE_ABI = NFT_ROULETTE_V2_ABI

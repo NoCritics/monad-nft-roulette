@@ -1,55 +1,313 @@
-.players-list h3 {
-  margin-bottom: 1.5rem;
-  color: var(--monad-accent);
-}
+/* Players List - VIP Lounge with Mosferatu Theme */
 
-.no-players {
-  text-align: center;
-  opacity: 0.6;
-  padding: 2rem;
-}
-
-.players {
+.players-list-luxury {
+  position: relative;
+  background: linear-gradient(135deg, #1a0f2e 0%, #2d1b47 100%);
+  border-radius: 20px;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(138, 43, 226, 0.2);
+  min-height: 500px;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
 }
 
-.player-item {
+/* Content overlay on top of backdrop */
+.vip-content-overlay {
+  position: relative;
+  z-index: 1;
+  padding: 30px;
+  background: linear-gradient(to bottom, rgba(26, 15, 46, 0.9) 0%, rgba(26, 15, 46, 0.7) 50%, rgba(26, 15, 46, 0.9) 100%);
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Elegant header without duplicate mascot */
+.vip-header-elegant {
+  text-align: center;
+  margin-bottom: 30px;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.vip-title {
+  color: #ffd700;
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.vip-subtitle {
+  color: #b19cd9;
+  font-size: 16px;
+  font-style: italic;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Players container with elegant spacing */
+.players-container-elegant {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 0;
+  max-height: 350px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(138, 43, 226, 0.5) rgba(138, 43, 226, 0.1);
+}
+
+.players-container-elegant::-webkit-scrollbar {
+  width: 8px;
+}
+
+.players-container-elegant::-webkit-scrollbar-track {
+  background: rgba(138, 43, 226, 0.1);
+  border-radius: 4px;
+}
+
+.players-container-elegant::-webkit-scrollbar-thumb {
+  background: rgba(138, 43, 226, 0.5);
+  border-radius: 4px;
+}
+
+/* Player cards with better contrast */
+.player-card-luxury {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 0 0 12px 0;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  background: rgba(139, 92, 246, 0.05);
-  border-radius: 8px;
-  transition: all 0.2s;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  animation: slideIn 0.4s ease-out;
 }
 
-.player-item:hover {
-  background: rgba(139, 92, 246, 0.1);
-  transform: translateX(4px);
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
+.player-card-luxury:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 215, 0, 0.4);
+  transform: translateX(5px);
+  box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
+}
+
+/* Top player special styling */
+.player-card-luxury.top-player {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 215, 0, 0.05) 100%);
+  border: 1px solid rgba(255, 215, 0, 0.5);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+}
+
+.crown-badge {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  font-size: 24px;
+  animation: crownBounce 2s ease-in-out infinite;
+}
+
+@keyframes crownBounce {
+  0%, 100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(5deg);
+  }
+}
+
+/* Player rank */
 .player-rank {
-  font-weight: 600;
-  font-size: 1.2rem;
-  color: var(--monad-purple);
-  width: 2rem;
+  background: rgba(138, 43, 226, 0.2);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  border-radius: 12px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
+.rank-number {
+  color: #ffd700;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Player info */
 .player-info {
   flex: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .player-address {
-  font-family: monospace;
-  font-size: 0.9rem;
+  margin-bottom: 8px;
 }
 
-.player-tickets {
+.address-text {
+  color: #e0d5ff;
+  font-family: monospace;
+  font-size: 14px;
   font-weight: 500;
-  color: var(--monad-accent);
+}
+
+/* Player stats */
+.player-stats {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.ticket-info {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.ticket-count {
+  color: #ffd700;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.ticket-label {
+  color: #b19cd9;
+  font-size: 14px;
+}
+
+.ticket-range {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 12px;
+}
+
+.range-label {
+  color: #9a86c7;
+}
+
+.range-value {
+  color: #c4b5ff;
+  font-family: monospace;
+}
+
+/* Player glow effect */
+.player-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.player-card-luxury:hover .player-glow {
+  left: 100%;
+}
+
+/* Top player shine */
+.top-player-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #ffd700, transparent);
+  animation: shine 3s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0%, 100% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(100%);
+  }
+}
+
+/* VIP footer */
+.vip-footer {
+  padding: 20px 0 0;
+  border-top: 1px solid rgba(138, 43, 226, 0.2);
+  margin-top: auto;
+}
+
+.total-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.total-label {
+  color: #b19cd9;
+  font-size: 14px;
+}
+
+.total-value {
+  color: #ffd700;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Empty state styling */
+.players-list-luxury:has(.vip-subtitle:contains("Waiting")) .vip-content-overlay {
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .vip-content-overlay {
+    padding: 20px;
+  }
+  
+  .vip-title {
+    font-size: 24px;
+  }
+  
+  .player-card-luxury {
+    padding: 16px;
+    gap: 12px;
+  }
+  
+  .ticket-count {
+    font-size: 20px;
+  }
+  
+  .player-stats {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
 }

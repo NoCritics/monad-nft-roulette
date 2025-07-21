@@ -1,8 +1,12 @@
+/* Luxury Casino App Layout */
 .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
+
+/* Removed phantom Chog decoration */
 
 .main-content {
   flex: 1;
@@ -10,26 +14,250 @@
   grid-template-columns: 2fr 1fr;
   gap: 2rem;
   padding: 2rem;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
   width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
+/* Game section with premium feel */
 .game-section {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  position: relative;
 }
 
+.game-section::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+/* Players section styled as VIP lounge */
 .players-section {
-  background: var(--monad-dark);
-  border-radius: 16px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 24px;
   padding: 2rem;
-  border: 1px solid rgba(139, 92, 246, 0.2);
+  border: 1px solid var(--glass-border);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 60px rgba(139, 92, 246, 0.1);
 }
 
+/* VIP badge decoration */
+.players-section::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background: url('/monanimals/generated/Mosferatu_VIP_manager.png') no-repeat center;
+  background-size: contain;
+  opacity: 0.1;
+  transform: rotate(-15deg);
+  pointer-events: none;
+}
+
+/* Gold trim effect */
+.players-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--casino-gold) 20%, 
+    var(--casino-gold-light) 50%, 
+    var(--casino-gold) 80%, 
+    transparent 100%
+  );
+  animation: shimmer 3s linear infinite;
+}
+
+/* Casino chip decorations */
+.casino-chips {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  gap: -10px;
+  z-index: 0;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.casino-chip {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--casino-gold) 0%, var(--casino-gold-dark) 100%);
+  box-shadow: 
+    0 4px 20px rgba(255, 215, 0, 0.4),
+    inset 0 0 0 3px var(--casino-gold-light),
+    inset 0 0 0 6px var(--casino-gold-dark);
+  position: relative;
+  animation: float 4s ease-in-out infinite;
+}
+
+.casino-chip:nth-child(2) {
+  animation-delay: 0.5s;
+  background: linear-gradient(135deg, var(--monad-purple) 0%, var(--monad-purple-dark) 100%);
+  box-shadow: 
+    0 4px 20px rgba(139, 92, 246, 0.4),
+    inset 0 0 0 3px var(--monad-purple-light),
+    inset 0 0 0 6px var(--monad-purple-dark);
+}
+
+.casino-chip:nth-child(3) {
+  animation-delay: 1s;
+  background: linear-gradient(135deg, #FF5252 0%, #D32F2F 100%);
+  box-shadow: 
+    0 4px 20px rgba(255, 82, 82, 0.4),
+    inset 0 0 0 3px #FF8A80,
+    inset 0 0 0 6px #D32F2F;
+}
+
+/* Card decoration effect */
+@keyframes card-float {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+.floating-cards {
+  position: fixed;
+  top: 100px;
+  right: 50px;
+  display: flex;
+  gap: -30px;
+  z-index: 0;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.floating-card {
+  width: 60px;
+  height: 90px;
+  background: linear-gradient(135deg, var(--monad-purple) 0%, var(--monad-purple-dark) 100%);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  animation: card-float 6s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.floating-card:nth-child(2) {
+  animation-delay: 1s;
+  transform: rotate(-10deg);
+}
+
+.floating-card:nth-child(3) {
+  animation-delay: 2s;
+  transform: rotate(-20deg);
+}
+
+/* Responsive luxury */
 @media (max-width: 1024px) {
   .main-content {
     grid-template-columns: 1fr;
+    padding: 1rem;
   }
+  
+  .players-section {
+    margin-top: 2rem;
+  }
+  
+  .casino-chips,
+  .floating-cards {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  
+  .players-section {
+    padding: 1.5rem;
+  }
+}
+
+/* Premium loading state */
+.loading-premium {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  position: relative;
+}
+
+.loading-premium::before {
+  content: '';
+  width: 60px;
+  height: 60px;
+  border: 3px solid transparent;
+  border-top-color: var(--casino-gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-premium::after {
+  content: '';
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  border: 3px solid transparent;
+  border-bottom-color: var(--monad-purple);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite reverse;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error state with style */
+.error-premium {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  color: #FF8A80;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Success animation */
+@keyframes success-pulse {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.success-indicator {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  background: var(--monad-green);
+  border-radius: 50%;
+  animation: success-pulse 1s ease-out;
+  pointer-events: none;
+  z-index: 9999;
 }

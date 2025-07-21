@@ -1,39 +1,362 @@
+/* Luxury Casino Header */
 .header {
-  background: var(--monad-dark);
-  border-bottom: 1px solid rgba(139, 92, 246, 0.2);
-  padding: 1rem 2rem;
+  background: rgba(10, 10, 10, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+  z-index: 100;
+  border-bottom: none;
+  padding: 0;
+}
+
+/* Glowing top border */
+.header-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--casino-gold) 20%, 
+    var(--monad-purple) 50%, 
+    var(--casino-gold) 80%, 
+    transparent 100%
+  );
+  animation: shimmer 3s linear infinite;
 }
 
 .header-content {
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: relative;
+}
+
+/* Logo Section */
+.logo-section {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--monad-purple), var(--monad-accent));
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.logo-container:hover {
+  transform: translateY(-2px);
+}
+
+.logo-mascot {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--casino-gold);
+  box-shadow: 
+    0 0 20px rgba(255, 215, 0, 0.5),
+    0 0 40px rgba(139, 92, 246, 0.3);
+  animation: float 4s ease-in-out infinite;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  margin: 0;
+  background: linear-gradient(135deg, 
+    var(--casino-gold) 0%, 
+    var(--casino-gold-light) 50%, 
+    var(--casino-gold) 100%
+  );
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-shadow: none;
+}
+
+
+.logo-subtitle {
+  font-family: var(--font-accent);
+  font-size: 0.9rem;
+  color: var(--monad-text-secondary);
+  margin: 0;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: inline-flex;
+}
+
+.logo-subtitle .letter {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  animation: letterJump 60s infinite;
+}
+
+/* Stagger the animation for each letter */
+.logo-subtitle .letter:nth-child(1) { animation-delay: 0s; }
+.logo-subtitle .letter:nth-child(2) { animation-delay: 0.05s; }
+.logo-subtitle .letter:nth-child(3) { animation-delay: 0.1s; }
+.logo-subtitle .letter:nth-child(4) { animation-delay: 0.15s; }
+.logo-subtitle .letter:nth-child(5) { animation-delay: 0.2s; }
+.logo-subtitle .letter:nth-child(6) { animation-delay: 0.25s; }
+.logo-subtitle .letter:nth-child(7) { animation-delay: 0.3s; }
+.logo-subtitle .letter:nth-child(8) { animation-delay: 0.35s; }
+.logo-subtitle .letter:nth-child(9) { animation-delay: 0.4s; }
+.logo-subtitle .letter:nth-child(10) { animation-delay: 0.45s; }
+.logo-subtitle .letter:nth-child(11) { animation-delay: 0.5s; }
+.logo-subtitle .letter:nth-child(12) { animation-delay: 0.55s; }
+
+@keyframes letterJump {
+  0%, 1%, 100% {
+    transform: translateY(0);
+  }
+  0.5% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Center Status */
+.header-center {
+  display: flex;
+  justify-content: center;
+}
+
+.casino-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.status-light {
+  width: 8px;
+  height: 8px;
+  background: var(--monad-green);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--monad-green);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.2); }
+}
+
+.status-text {
+  font-family: var(--font-accent);
+  font-size: 0.85rem;
+  color: var(--monad-green);
+  letter-spacing: 0.1em;
+}
+
+/* Header Right */
+.header-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Wallet Container */
+.wallet-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .wallet-info {
   display: flex;
   align-items: center;
   gap: 1rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+}
+
+.wallet-balance {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.balance-label {
+  font-size: 0.7rem;
+  color: var(--monad-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .address {
-  font-family: monospace;
-  background: rgba(139, 92, 246, 0.1);
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  border: 1px solid rgba(139, 92, 246, 0.2);
+  font-family: var(--font-accent);
+  font-size: 1.1rem;
+  color: var(--casino-gold);
+  letter-spacing: 0.05em;
 }
 
-.connect-btn, .disconnect-btn {
-  font-size: 0.9rem;
+/* VIP Badge */
+.vip-badge {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+.vip-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--casino-gold);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Premium Connect Button */
+.premium-connect {
+  position: relative;
+  padding: 0.75rem 2rem;
+  background: linear-gradient(135deg, var(--casino-gold) 0%, var(--casino-gold-dark) 100%);
+  color: var(--casino-black);
+  font-family: var(--font-accent);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: none;
+  border-radius: 50px;
+  overflow: hidden;
+  transition: all 0.3s;
+  box-shadow: 
+    0 4px 20px rgba(255, 215, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-shine {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, 
+    transparent 30%, 
+    rgba(255, 255, 255, 0.5) 50%, 
+    transparent 70%
+  );
+  transform: rotate(45deg) translateY(-100%);
+  transition: transform 0.6s;
+}
+
+.premium-connect:hover .btn-shine {
+  transform: rotate(45deg) translateY(100%);
+}
+
+.premium-connect:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 30px rgba(255, 215, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-text {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-icon {
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* Disconnect Button */
+.disconnect-btn {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.8) 0%, rgba(220, 38, 38, 0.8) 100%);
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.disconnect-btn:hover {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 1) 0%, rgba(220, 38, 38, 1) 100%);
+}
+
+/* Header Border */
+.header-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(139, 92, 246, 0.3) 20%,
+    rgba(255, 215, 0, 0.5) 50%,
+    rgba(139, 92, 246, 0.3) 80%,
+    transparent 100%
+  );
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .header-content {
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+  }
+  
+  .header-center {
+    display: none;
+  }
+  
+  .header-right {
+    justify-self: end;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    padding: 1rem;
+  }
+  
+  .logo-title {
+    font-size: 1.5rem;
+  }
+  
+  .logo-mascot {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .vip-badge {
+    display: none;
+  }
+  
+  .premium-connect {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .btn-icon {
+    display: none;
+  }
 }
