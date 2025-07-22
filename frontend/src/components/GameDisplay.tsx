@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useReadContract, useWriteContract, useReadContracts, useAccount } from 'wagmi'
 import { CONTRACTS, NFT_ROULETTE_V2_ABI, GameState } from '../config/contracts'
 import Timer from './Timer'
@@ -14,6 +14,7 @@ export default function GameDisplay({ refreshTrigger }: GameDisplayProps) {
   const [showNotification, setShowNotification] = useState(false)
   const [notificationMessage, setNotificationMessage] = useState('')
   const [isClaiming, setIsClaiming] = useState(false)
+  const prevGameStateRef = useRef<number>(0)
   
   const { address: userAddress } = useAccount()
   const { writeContract } = useWriteContract()
@@ -98,17 +99,18 @@ export default function GameDisplay({ refreshTrigger }: GameDisplayProps) {
     setPlayers(playerData)
   }, [playerAddresses, playerInfoResults])
   
-  // Watch for game state changes
+  // Watch for game state changes - FIXED: No dependency array issues
   useEffect(() => {
-    let prevState = Number(gameState)
     const interval = setInterval(async () => {
       await refetchGameState()
-      const newState = Number(gameState)
+      const currentState = Number(gameState)
+      const previousState = prevGameStateRef.current
       
-      if (newState !== prevState && newState !== undefined) {
-        prevState = newState
+      if (currentState !== previousState && currentState !== undefined && !isNaN(currentState)) {
+        prevGameStateRef.current = currentState
+        
         // Show notification for state changes
-        switch (newState) {
+        switch (currentState) {
           case GameState.COUNTDOWN:
             showGameNotification('🎮 Game Starting! 3 minutes countdown begins!')
             break
@@ -126,29 +128,52 @@ export default function GameDisplay({ refreshTrigger }: GameDisplayProps) {
     }, 2000) // Check every 2 seconds for state updates
     
     return () => clearInterval(interval)
-  }, [gameState, refetchGameState])
+  }, []) // Empty dependency array - interval runs once per component lifetime
   
-  // Poll for winner when game is complete
+  // Poll for winner when game is complete - FIXED: Proper cleanup and dependencies
   useEffect(() => {
-    if (Number(gameState) === GameState.COMPLETE) {
-      // Start polling for the actual winner
-      const winnerPollInterval = setInterval(async () => {
-        const result = await refetchWinner()
-        // Stop polling once we have a non-zero winner
-        if (result.data && result.data !== '0x0000000000000000000000000000000000000000') {
-          clearInterval(winnerPollInterval)
-        }
-      }, 1000) // Poll every second
+    let winnerPollInterval: NodeJS.Timeout | null = null
+    
+    const checkForWinner = () => {
+      const currentState = Number(gameState)
       
-      // Cleanup
-      return () => clearInterval(winnerPollInterval)
+      if (currentState === GameState.COMPLETE) {
+        if (!winnerPollInterval) {
+          winnerPollInterval = setInterval(async () => {
+            const result = await refetchWinner()
+            // Stop polling once we have a non-zero winner
+            if (result.data && result.data !== '0x0000000000000000000000000000000000000000') {
+              if (winnerPollInterval) {
+                clearInterval(winnerPollInterval)
+                winnerPollInterval = null
+              }
+            }
+          }, 1000) // Poll every second
+        }
+      } else {
+        // Clear polling if game state changes away from COMPLETE
+        if (winnerPollInterval) {
+          clearInterval(winnerPollInterval)
+          winnerPollInterval = null
+        }
+      }
     }
-  }, [gameState, refetchWinner])
+    
+    // Check initially and then whenever gameState changes
+    checkForWinner()
+    
+    // Cleanup on unmount
+    return () => {
+      if (winnerPollInterval) {
+        clearInterval(winnerPollInterval)
+      }
+    }
+  }, [gameState]) // Only gameState dependency - this is safe
   
   // Refresh on trigger
   useEffect(() => {
     refetchGameState()
-  }, [refreshTrigger, refetchGameState])
+  }, [refreshTrigger]) // Removed refetchGameState from dependencies to prevent extra calls
   
   const showGameNotification = (message: string) => {
     setNotificationMessage(message)

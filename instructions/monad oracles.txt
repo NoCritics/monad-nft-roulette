@@ -1,0 +1,226 @@
+Oracles
+Oracles make off-chain data accessible on chain.
+
+Definitions
+Term	Description
+Push oracle	Provider regularly pushes price data to the oracle contract on chain
+Pull (on-demand) oracle	User triggers price data update while calling a smart contract
+Custom oracle	A custom calculator
+VRF (Verifiable Random Function)	Provides random numbers on chain
+Provider Summary
+The following providers support Monad Testnet:
+
+Provider	Docs	Contract addresses	Live data	Support notes
+Blocksense	Docs	
+Price feeds [push oracle]:
+
+WMON / USD (feed id 1000000) : 0x55dCA5CBe2042918D18b8946cA367cffC6798aE3
+WBTC / USD (feed id 32): 0x930eD9F26271399017d7B8E01A9078aFA5B26f14
+USDT / USD (feed id 7): 0xc9Ba9f4EFdbaA1158DE97658e428D1962dB60616
+USDC / USD (feed id 19): 0x74265c4060CB011CE32fabB2682A08B3390C061D
+DAI / USD (feed id 82): 0x604607a8F1bC9614f5CAF5e2793aAd7084481aFE
+(Update conditions: 0.1% deviation & 1h heartbeat)
+
+Contract addresses:
+
+UpgradeableProxyADFS: 0xADF5aacfA254FbC566d3b81e04b95db4bCF7b40F
+AggregatedDataFeedStore: 0x6bF1BF2765A1644554CB6060d964FA7ce2FBe6eA
+CLFeedRegistryAdapter: 0x3cE0Cc8fAD428e61bBC43D29C3f4fB6C7e1E6f06
+Push oracle;
+Custom oracles
+Chainlink	Docs	
+Price Feeds [push oracle]:
+
+BTC / USD: 0x2Cd9D7E85494F68F5aF08EF96d6FD5e8F71B4d31
+ETH / USD: 0x0c76859E85727683Eeba0C70Bc2e0F5781337818
+LINK / USD: 0x4682035965Cd2B88759193ee2660d8A0766e1391
+USDC / USD: 0x70BB0758a38ae43418ffcEd9A25273dd4e804D15
+USDT / USD: 0x14eE6bE30A91989851Dc23203E41C804D4D71441
+general reference
+
+Data Streams [pull oracle]:
+
+Data stream verifier proxy address: 0xC539169910DE08D237Df0d73BcDa9074c787A4a1
+Live data	
+Push oracle (Price Feeds)
+Pull oracle (Data Streams)
+ChainSight	Docs			Custom oracles. Migrating to a new version
+Chronicle	Docs	Address reference	Dashboard (toggle dev mode)	Push oracle; custom oracles
+eOracle	Docs	
+Address reference
+Update conditions: 0.5% deviation & 24h heartbeat
+Dashboard	Push oracle
+Gelato VRF	Docs			VRF
+Orochi	Docs	
+Orocle [oracle] addresses
+Orand [VRF] addresses
+zkOracle;
+VRF
+Pyth	Docs	
+Price feeds: 0x2880aB155794e7179c9eE2e38200202908C17B43
+
+Beta price feeds (incl MON/USDC): 0xad2B52D2af1a9bD5c561894Cdd84f7505e1CD0B5
+
+Entropy: 0x36825bf3Fbdf5a29E2d5148bfe7Dcf7B5639e320
+Live data
+
+Beta live data (includes MON / USDC)	Pull oracle;
+VRF
+Redstone	Docs	
+Push oracle addresses
+Update conditions for all: 0.5% deviation & 6h heartbeat
+Live data	Push oracle;
+pull oracle
+Stork	Docs	
+Pull oracle (includes MON/USD): 0xacC0a0cF13571d30B4b8637996F5D6D774d4fd62
+Addresses; APIs; Asset ID Registry
+Pull oracle
+Supra	Docs	
+Push oracle: 0x6Cd59830AAD978446e6cc7f6cc173aF7656Fb917
+(5% deviation threshold & 1h update frequency;
+Supported pairs: BTC/USDT, SOL/USDT, ETH/USDT)
+
+Pull oracle: 0x443A0f4Da5d2fdC47de3eeD45Af41d399F0E5702
+
+dVRF: 0x6D46C098996AD584c9C40D6b4771680f54cE3726
+Live data	Push oracle;
+Pull oracle;
+dVRF
+Switchboard	Docs	
+Pull oracle: 0x33A5066f65f66161bEb3f827A3e40fce7d7A2e6C
+
+More info: Deployments
+Live data	Pull oracle;
+Oracle aggregator;
+VRF
+Provider Details
+Blocksense
+Blocksense's programmable oracles let you access high performance price feeds plus any custom internet data, using familiar DeFi-compatible interfaces, all while enjoying super low costs powered by ZK technology.
+
+To get started, check out the documentation or reach out to the team on Discord.
+
+Supported Networks:
+
+Monad Testnet
+Chainlink
+Chainlink Data Streams
+Chainlink Data Streams deliver low-latency market data offchain, which can be verified onchain. This approach provides decentralized applications (dApps) with on-demand access to high-frequency market data backed by decentralized, fault-tolerant, and transparent infrastructure.
+
+Traditional push-based oracles update onchain data at set intervals or when certain price thresholds are met. In contrast, Chainlink Data Streams uses a pull-based design that preserves trust-minimization with onchain verification.
+
+To get started, check out the documentation.
+
+Supported Networks:
+
+Monad Testnet
+Chainlink Price Feeds
+Chainlink Price Feeds are the quickest way to connect your smart contracts to real-world data such as asset prices.
+
+Data Feeds aggregate many data sources and publish them onchain using a combination of the Decentralized Data Model and Offchain Reporting.
+
+To get started, check out the documentation.
+
+Supported Networks:
+
+Monad Testnet
+ChainSight
+Chainsight redefines oracles with no-code tools, lowering costs, reducing single-operator risks, and driving scalable, open innovation.
+
+To get started, check out the documentation.
+
+Supported Networks:
+
+Monad Testnet
+Chronicle
+Chronicle's decentralized oracle network was originally built within MakerDAO for the development of DAI and is now available to builders on Monad.
+
+Data Feeds: Builders can choose from 90+ data feeds, including crypto assets, yield rates, and RWAs. Chronicle's data is sourced via custom-built data models, only utilizing Tier 1 sources.
+Transparency & Integrity: Chronicle's oracle network is fully transparent and verifiable via the Chronicle dashboard. Users can cryptographically challenge the integrity of every oracle update using the 'verify' feature. Data is independently sourced by a community of Validators including Gitcoin, Etherscan, Infura, DeFi Saver, and MakerDAO.
+Gas Efficiency: Pioneering the Schnorr-based oracle architecture, Chronicle's oracles use 60-80% less gas per update than other oracle providers. This lowest cost per update allows Push oracle updates to be made more frequently, enabling granular data reporting.
+Every oracle implementation is customized to fit your needs. Implement one of our existing data models or contact Chronicle to develop custom oracle data feeds via Discord.
+Developers can dive deeper into Chronicle Protocol's architecture and unique design choices via the docs.
+
+Supported Networks:
+
+Monad Testnet
+eOracle
+eOracle is an open infrastructure platform that empowers developers to build secure blockchain oracles backed by Ethereum's battle-tested security model. eOracle creates a foundation for specialized data services that combine deep domain expertise with unmatched cryptoeconomic security.
+
+To get started, visit the eOracle documentation.
+
+Supported Networks:
+
+Monad Testnet
+Gelato VRF
+Gelato VRF (Verifiable Random Function) provides a unique system offering trustable randomness on Monad Testnet.
+
+See this guide to learn how to get started with Gelato VRF.
+
+Supported Networks:
+
+Monad Testnet
+Orochi
+Orochi Network is the world's first Verifiable Data Infrastructure, addressing scalability, privacy, and data integrity challenges.
+
+To get started, visit the Orochi documentation.
+
+Supported Networks:
+
+Monad Testnet
+Pyth
+The Pyth Network is one of the largest first-party oracle networks, delivering real-time data across a number of chains. Pyth introduces a low-latency pull oracle design. Data providers push price updates to Pythnet every 400 ms. Users pull aggregated prices from Pythnet onto Monad when needed, enabling everyone in the onchain environment to access that data point most efficiently.
+
+Pyth Price Feeds features:
+
+400ms latency
+First-party data sourced directly from financial institutions
+Price feeds ranging from crypto, stocks, FX, and metals
+See also: beta price feeds (testnet MON/USD is a beta price feed)
+Available on many major chains
+Contract Addresses for Monad Testnet:
+
+Price feeds: 0x2880aB155794e7179c9eE2e38200202908C17B43
+Beta price feeds: 0xad2B52D2af1a9bD5c561894Cdd84f7505e1CD0B5 (testnet MON/USD is a beta price feed)
+Entropy: 0x36825bf3Fbdf5a29E2d5148bfe7Dcf7B5639e320
+Supported Networks:
+
+Monad Testnet
+note
+The testnet MON/USD price feed is currently a beta feed on Pyth Network. To use the MON/USD feed, integrate the beta price feed contract instead of the primary price feed contract.
+
+To get the MON/USD price feed offchain, use the beta hermes endpoint: https://hermes-beta.pyth.network
+
+Redstone
+RedStone is the fastest-growing modular oracle, specializing in yield-bearing collateral for lending markets, such as LSTs, LRTs and BTCFi.
+
+To get started, visit the Redstone documentation.
+
+Supported Networks:
+
+Monad Testnet
+Stork
+Stork is an oracle protocol that enables ultra low latency connections between data providers and both on and off-chain applications. The most common use-case for Stork is pulling and consuming market data in the form of real time price feeds for DeFi.
+
+Stork is implemented as a pull oracle. Stork continuously aggregates, verifies, and audits data from trusted publishers, and makes that aggregated data available at sub-second latency and frequency. This data can then be pulled into any on or off-chain application as often as needed.
+
+To learn more about how Stork works, visit Core Concepts and How It Works.
+
+Supported Networks:
+
+Monad Testnet
+Supra
+Supra provides VRF and decentralized oracle price feeds (push and pull based) that can be used for onchain and offchain use-cases such as spot and perpetual DEXes, lending protocols, and payments protocols.
+
+To get started, visit the Supra documentation
+
+Supported Networks:
+
+Monad Testnet
+Switchboard
+Switchboard is a customizable oracle network and oracle aggregator.
+
+To get started, visit the Switchboard documentation.
+
+Supported Networks:
+
+Monad Testnet

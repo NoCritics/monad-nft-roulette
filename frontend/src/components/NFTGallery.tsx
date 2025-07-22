@@ -29,7 +29,7 @@ export default function NFTGallery({ onDepositReady, refreshTrigger }: NFTGaller
     }
   }, [isConnected, userAddress, refreshTrigger])
   
-  // Check approvals when selection changes
+  // Check approvals when selection changes - Optimized: only when NFTs selected
   useEffect(() => {
     if (selectedNFTs.length > 0 && userAddress) {
       checkApprovals()

@@ -38,7 +38,7 @@ export default function PlayersList({ refreshTrigger }: PlayersListProps) {
   
   useEffect(() => {
     refetch()
-  }, [refreshTrigger, refetch])
+  }, [refreshTrigger]) // Removed refetch from dependencies to prevent extra calls
   
   useEffect(() => {
     if (!playerAddresses || !playerInfoResults) {

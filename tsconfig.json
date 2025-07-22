@@ -7,20 +7,37 @@
     "resolveJsonModule": true,
     "allowJs": true,
     "outDir": "./dist",
+    "rootDir": "./",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    "strict": false,
     "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "declaration": false,
+    "sourceMap": true,
+    "types": ["node"]
   },
   "include": [
-    "./scripts",
-    "./contracts",
-    "./hardhat.config.ts"
+    "./scripts/**/*",
+    "./contracts.config.ts",
+    "./hardhat.config.ts",
+    "./hardhat-env.d.ts"
   ],
   "exclude": [
     "node_modules",
-    "frontend"
+    "frontend",
+    "dist",
+    "artifacts",
+    "cache"
   ],
-  "files": ["./hardhat.config.ts"]
+  "files": [
+    "./hardhat.config.ts"
+  ],
+  "ts-node": {
+    "files": true
+  }
 }

@@ -2,51 +2,61 @@
 node_modules/
 frontend/node_modules/
 
-# Build outputs
-artifacts/
-cache/
+# Production builds
+dist/
 frontend/dist/
-frontend/build/
-typechain/
-typechain-types/
+*.tsbuildinfo
+
+# Hardhat files
+cache/
+artifacts/
 
 # Environment variables
 .env
 .env.local
-.env.*.local
-
-# Editor directories
-.vscode/
-.idea/
+.env.production
 
 # Logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.claude-server-commander-logs/
+pnpm-debug.log*
+lerna-debug.log*
+
+# PM2
+.pm2/
+pm2.log
 
 # OS files
 .DS_Store
 Thumbs.db
-desktop.ini
 
-# Testing
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Test coverage
 coverage/
-coverage.json
 .nyc_output/
 
 # Temporary files
 *.tmp
 *.temp
-.tmp/
+.cache/
 
-# Hardhat
-deployments/localhost/
-deployments/hardhat/
+# Build artifacts
+tsconfig.build.json
 
-# Documentation build
-docs/_build/
+# Deployment packages
+*.tar.gz
+*.zip
+deploy/
 
-# Instructions
-instructions/
+# Local development
+.env.development
+hardhat.config.local.ts

@@ -1,0 +1,121 @@
+MAGIC EDEN PRICE API CALL WITH MY OWN DEPLOYED NFT
+
+curl --request GET \
+     --url 'https://api-mainnet.magiceden.dev/v3/rtp/monad-testnet/collections/v7?id=0x9524495D7B117eFC3Aa45C6d8455caD7Fa66766d&includeMintStages=false&includeSecurityConfigs=false&normalizeRoyalties=false&useNonFlaggedFloorAsk=false&sortBy=allTimeVolume&limit=20' \
+     --header 'Authorization: Bearer YOUR_API_KEY' \
+     --header 'accept: */*'
+
+
+
+
+{
+  "collections": [
+    {
+      "chainId": 10143,
+      "id": "0x9524495d7b117efc3aa45c6d8455cad7fa66766d",
+      "slug": null,
+      "createdAt": "2025-06-25T14:53:41.070Z",
+      "updatedAt": "2025-06-25T21:16:55.505Z",
+      "name": "Chog The Testicule",
+      "symbol": null,
+      "contractDeployedAt": null,
+      "image": "https://img.reservoir.tools/images/v2/monad-testnet/i9YO%2F4yHXUdJsWcTqhqvf5ygKgOmz4JFcI9ZqRrfJzVBcB60Eg7mIFWgb%2FO%2F01RCF5GXg0DxFWnmOotWtdjuAYslM7DbUtaO4NtH6c%2FS62eeVjXHEVJWIbIpWsXXcPPM?width=250",
+      "banner": null,
+      "twitterUrl": null,
+      "discordUrl": null,
+      "externalUrl": "https://0x9524495D7B117eFC3Aa45C6d8455caD7Fa66766d_10143.nfts2.me/",
+      "twitterUsername": null,
+      "openseaVerificationStatus": null,
+      "magicedenVerificationStatus": null,
+      "description": "Let em jump n jump n jump\n\nMade with [NFTs2Me.com](https://nfts2me.com/)",
+      "metadataDisabled": false,
+      "isSpam": false,
+      "isNsfw": false,
+      "isMinting": false,
+      "sampleImages": [
+        "https://img.reservoir.tools/images/v2/monad-testnet/i9YO%2F4yHXUdJsWcTqhqvf5ygKgOmz4JFcI9ZqRrfJzVBcB60Eg7mIFWgb%2FO%2F01RCF5GXg0DxFWnmOotWtdjuAYslM7DbUtaO4NtH6c%2FS62d6rSrbQbrPKIwWs7cMAN41.webp"
+      ],
+      "tokenCount": "10",
+      "onSaleCount": "0",
+      "primaryContract": "0x9524495d7b117efc3aa45c6d8455cad7fa66766d",
+      "tokenSetId": "contract:0x9524495d7b117efc3aa45c6d8455cad7fa66766d",
+      "creator": null,
+      "isSharedContract": false,
+      "royalties": {
+        "recipient": "0x9524495d7b117efc3aa45c6d8455cad7fa66766d",
+        "breakdown": [
+          {
+            "bps": 750,
+            "recipient": "0x9524495d7b117efc3aa45c6d8455cad7fa66766d"
+          }
+        ],
+        "bps": 750
+      },
+      "allRoyalties": {
+        "eip2981": [
+          {
+            "bps": 750,
+            "recipient": "0x9524495d7b117efc3aa45c6d8455cad7fa66766d"
+          }
+        ],
+        "onchain": [
+          {
+            "bps": 750,
+            "recipient": "0x9524495d7b117efc3aa45c6d8455cad7fa66766d"
+          }
+        ]
+      },
+      "floorAsk": {
+        "id": null,
+        "price": null,
+        "maker": null,
+        "validFrom": 2147483647,
+        "validUntil": null,
+        "token": null
+      },
+      "topBid": {
+        "id": null,
+        "sourceDomain": null,
+        "price": null,
+        "maker": null,
+        "validFrom": null,
+        "validUntil": null
+      },
+      "rank": {
+        "1day": null,
+        "7day": null,
+        "30day": null,
+        "allTime": null
+      },
+      "volume": {
+        "1day": 0,
+        "7day": 0,
+        "30day": 0,
+        "allTime": 0
+      },
+      "volumeChange": {
+        "1day": null,
+        "7day": null,
+        "30day": null
+      },
+      "floorSale": {
+        "1day": null,
+        "7day": null,
+        "30day": null
+      },
+      "floorSaleChange": {
+        "1day": null,
+        "7day": null,
+        "30day": null
+      },
+      "collectionBidSupported": true,
+      "ownerCount": 2,
+      "contractKind": "erc721",
+      "mintedTimestamp": 1750863217,
+      "lastMintTimestamp": null,
+      "mintStages": [],
+      "supply": "10",
+      "remainingSupply": "10"
+    }
+  ]
+}

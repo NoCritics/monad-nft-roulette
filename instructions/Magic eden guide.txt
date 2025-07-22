@@ -1,0 +1,143 @@
+Collections
+get
+https://api-mainnet.magiceden.dev/v3/rtp/{chain}/collections/v7
+Use this API to explore a collection's metadata and statistics (sales, volume, etc).
+
+Log in to see full request history
+time	status	user agent	
+1m ago	
+200
+1m ago	
+200
+42m ago	
+200
+4 Requests This Month
+
+Path Params
+chain
+string
+required
+The blockchain chain.
+
+
+monad-testnet
+Query Params
+id
+string
+Filter to a particular collection with collection id. Example: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63
+
+slug
+string
+Filter to a particular collection slug. Example: boredapeyachtclub
+
+collectionsSetId
+string
+Filter to a particular collection set. Example: 8daa732ebe5db23f267e58d52f1c9b1879279bcdf4f78b8fb563390e6946ea65
+
+community
+string
+Filter to a particular community. Example: artblocks
+
+contract
+array of strings
+length ≤ 20
+
+ADD string
+creator
+string
+Filter by creator
+
+name
+string
+Search for collections that match a string. Example: bored
+
+maxFloorAskPrice
+number
+Maximum floor price of the collection
+
+minFloorAskPrice
+number
+Minumum floor price of the collection
+
+includeAttributes
+boolean
+If true, attributes will be included in the response. Must filter by id or slug to a particular collection.
+
+
+includeSalesCount
+boolean
+If true, sales count (1 day, 7 day, 30 day, all time) will be included in the response. Must filter by id or slug to a particular collection.
+
+
+includeMintStages
+boolean
+Defaults to false
+If true, mint data for the collection will be included in the response.
+
+
+false
+includeSecurityConfigs
+boolean
+Defaults to false
+If true, security configuration data (e.g. ERC721C configuration) will be included in the response.
+
+
+false
+normalizeRoyalties
+boolean
+Defaults to false
+If true, prices will include missing royalties to be added on-top.
+
+
+false
+useNonFlaggedFloorAsk
+boolean
+Defaults to false
+If true, return the non flagged floor ask. Supported only when normalizeRoyalties is false.
+
+
+false
+sortBy
+string
+Defaults to allTimeVolume
+Order the items are returned in the response. Options are #DayVolume, createdAt, updatedAt, or floorAskPrice
+
+
+allTimeVolume
+sortDirection
+string
+limit
+integer
+≥ 1
+Defaults to 20
+Amount of items returned in response. Default and max limit is 20, unless sorting by updatedAt which has a max limit of 1000.
+
+20
+startTimestamp
+number
+When sorting by updatedAt, the start timestamp you want to filter on (UTC).
+
+endTimestamp
+number
+When sorting by updatedAt, the end timestamp you want to filter on (UTC).
+
+continuation
+string
+Use continuation token to request next offset of items.
+
+displayCurrency
+string
+Input any ERC20 address to return result in given currency. Applies to topBid and floorAsk.
+
+Response
+
+200
+Successful
+
+
+
+AN GENERAL API CALL FOR THE COLLECTIONS:
+curl --request GET \
+     --url 'https://api-mainnet.magiceden.dev/v3/rtp/monad-testnet/collections/v7?includeMintStages=false&includeSecurityConfigs=false&normalizeRoyalties=false&useNonFlaggedFloorAsk=false&sortBy=allTimeVolume&limit=20' \
+     --header 'Authorization: Bearer YOUR_API_KEY' \
+     --header 'accept: */*'

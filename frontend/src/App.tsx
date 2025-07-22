@@ -9,7 +9,18 @@ import PlayersList from './components/PlayersList'
 import VideoBackdrop from './components/VideoBackdrop'
 import './App.css'
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false, // Don't refetch when user returns to tab
+      staleTime: 30000, // 30 seconds before considering data stale
+      gcTime: 300000, // 5 minutes cache time (renamed from cacheTime)
+      retry: 1, // Only retry once on failure instead of default 3 times
+      refetchOnMount: true, // Still refetch on component mount
+      refetchOnReconnect: true, // Refetch when network reconnects
+    }
+  }
+})
 
 function App() {
   const [refreshTrigger, setRefreshTrigger] = useState(0)
